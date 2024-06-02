@@ -1,7 +1,7 @@
 import express, { request, response } from "express";
-import { food } from "../models/foodModel.js";
+import {Food} from "../models/foodModel.js";
 
-const router = express.router();
+const router = express.Router();
 
 router.post('/', async (request, response) => {
     try {
@@ -15,7 +15,7 @@ router.post('/', async (request, response) => {
             })
         }
 
-        const newfood ={
+        const newFood ={
             name:request.body.name,
             priceInCents:request.body.priceInCents,
             image:request.body.image,
@@ -30,3 +30,5 @@ router.post('/', async (request, response) => {
         response.status(500).send({message:error.message});
     }
 });
+
+export default router;
