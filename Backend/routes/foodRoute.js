@@ -3,6 +3,8 @@ import {Food} from "../models/foodModel.js";
 
 const router = express.Router();
 
+//Send all food items
+
 router.post('/', async (request, response) => {
     try {
         if (
@@ -31,6 +33,7 @@ router.post('/', async (request, response) => {
     }
 });
 
+//Get all food items
 router.get('/',async (request,response)=>{
     try{
 
@@ -40,6 +43,23 @@ router.get('/',async (request,response)=>{
             data:food
         })
 
+    } catch(error){
+        console.log(error.message);
+        response.status(500).send({message:error.message})
+    }
+});
+
+//Delete Particular food item
+
+router.delete('/:id',async(request,response)=>{
+    try{
+
+        const {id} = request.params;
+        const result = await Food.findByIdAndDelete(id);
+
+        if(!result){
+            return response.status(400).json({message:'Item not found'})
+        }
     } catch(error){
         console.log(error.message);
         response.status(500).send({message:error.message})
