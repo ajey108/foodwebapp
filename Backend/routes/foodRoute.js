@@ -111,7 +111,7 @@ router.get('/:id',async(request,response)=>{
         const { id } = request.params;
         const food = await Food.findById(id);
         
-           return response.status(200).json(food);
+           return response.status(200).json(food)
      
 
     } catch(error){
