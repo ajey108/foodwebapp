@@ -103,5 +103,22 @@ router.put('/:id', async (request, response) => {
     }
 });
 
+//Get particular food item
+
+router.get('/:id',async(request,response)=>{
+    try{
+
+        const { id } = request.params;
+        const food = await Food.findById(id);
+        
+           return response.status(200).json(food);
+     
+
+    } catch(error){
+        console.log(error.message);
+        response.status(500).send({ message: error.message })
+    }
+})
+
 
     export default router;
