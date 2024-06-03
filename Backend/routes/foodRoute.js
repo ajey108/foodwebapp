@@ -31,4 +31,19 @@ router.post('/', async (request, response) => {
     }
 });
 
+router.get('/',async (request,response)=>{
+    try{
+
+        const food = await Food.find({});
+
+        return response.status(200).json({
+            data:food
+        })
+
+    } catch(error){
+        console.log(error.message);
+        response.status(500).send({message:error.message})
+    }
+})
+
 export default router;
