@@ -5,7 +5,7 @@ import foodRoute from "./routes/foodRoute.js";
 import { authRouter } from "./controllers/authController.js";
 import { auth } from "./middleware/authMiddleware.js";
 import cors from "cors";
-import User from "./models/user.js";
+import User from "./models/userModel.js";
 
 
 config();
