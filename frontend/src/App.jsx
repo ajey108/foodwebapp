@@ -33,6 +33,8 @@ const App = () => {
   )
 }
 
+//Admin routes
+
 const AdminRoutes =()=>{
 
   return(

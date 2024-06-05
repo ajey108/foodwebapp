@@ -24,7 +24,6 @@ mongoose
 app.use(express.json());
 app.use('/food',foodRoute);
 
-app.use(cors());
 
 app.use('/auth',authRouter);
 
