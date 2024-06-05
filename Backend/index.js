@@ -12,6 +12,8 @@ config();
 
 const app = express();
 
+app.use(cors());
+
 app.listen(process.env.PORT,()=> console.log(`liste on ${process.env.PORT} PORT`));
 
 mongoose
