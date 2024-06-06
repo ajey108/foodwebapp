@@ -23,7 +23,7 @@ const Admin = () => {
   return (
     <div className="bg-gray-400">
 
-      <Link to='/' className='bg-green-600 hover:bg-green-900 text-white py-2 px-4 text-sm rounded-lg shadow-md'>Add Item + </Link>
+      <Link to='/admin/food/create' className='bg-green-600 hover:bg-green-900 text-white py-2 px-4 text-sm rounded-lg shadow-md'>Add Item + </Link>
       <div className='over-flow-x-auto shadow-md rounded-lg'>
         <table className='w-full text-left'>
           <thead className='uppercase bg-gray-300'>
@@ -43,8 +43,8 @@ const Admin = () => {
                 <td className="py-3 px-5">
                   <div className='flex justify-center gap-x-4'>
                     <div className='flex justify-center gap-x-1'>
-                      <Link to="/" className="bg-blue-400 hover:bg-blue-700 text-white rounded-sm py-1 px-2">Edit</Link>
-                      <Link to="/" className='bg-blue-500 hover:bg-blue-800 text-white rounded-sm py-1 px-2'>Delete</Link>
+                      <Link to={`/admin/food/edit/${food._id}`} className="bg-blue-400 hover:bg-blue-700 text-white rounded-sm py-1 px-2">Edit</Link>
+                      <Link to={`/admin/food/delete/${food._id}`}className='bg-blue-500 hover:bg-blue-800 text-white rounded-sm py-1 px-2'>Delete</Link>
                     </div>
                   </div>
                 </td>
