@@ -50,6 +50,7 @@ const EditFood = () => {
   }
   return (
     <div className='p-6 bg-gray-50 flex justify-center items-center'>
+       {loading && <Spinner/>}
       <div className="container max-w-lg shadow-lg rounded-lg p-5 bg-white">
       <Link to="/admin" className='flex justify-center items-center bg-gray-400 mb-4  w-12 p-2 text-sm rounded-xl'>Back</Link>
       <h1 className='text-3xl font-semibold my-4 text-gray-800'>Edit Food</h1>
