@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {enqueueSnackbar, useSnackbar} from "notistack";
+import Spinner from '../components/Spinner';
 
 const EditFood = () => {
 
@@ -32,7 +33,7 @@ const EditFood = () => {
 
   const handleFood =()=>{
     const data = {name,priceInCents};
-    setLoading(true);
+    setLoading(false);
     axios
       .put(`http://localhost:3000/food/${id}`,data)
       .then(()=>{
@@ -42,7 +43,7 @@ const EditFood = () => {
 
       })
       .catch((error)=>{
-        setLoading(false);
+        setLoading(true);
         enqueueSnackbar('Error',{variant:'error'});
         console.log(error);
       })
