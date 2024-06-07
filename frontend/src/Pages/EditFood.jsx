@@ -16,7 +16,7 @@ const EditFood = () => {
   useEffect(()=>{
     setLoading(true);
     axios
-      .get(`http://localhost:3000/food${id}`)
+      .get(`http://localhost:3000/food/${id}`)
       .then((response)=>{
         setName(response.data.name)
         setPriceInCents(response.data.priceInCents);
@@ -30,11 +30,11 @@ const EditFood = () => {
       })
   },[id])
 
-  const handledFood =()=>{
+  const handleFood =()=>{
     const data = {name,priceInCents};
     setLoading(true);
     axios
-      .put(`http://localhost:3000/food/${id},data`)
+      .put(`http://localhost:3000/food/${id}`,data)
       .then(()=>{
         setLoading(false);
         enqueueSnackbar('Food Edited successfully',{variant:'success'});
@@ -72,6 +72,10 @@ const EditFood = () => {
            onChange={(e)=>setPriceInCents(e.target.value)}
             className='border border-gray-300 px-4 py-2 w-full rounded-md'
             />
+
+            <button onClick={handleFood} className='w-full bg-green-500 hover:bg-green-800'>
+              SaveChanges
+            </button>
       </div>
       </div>
     </div>
