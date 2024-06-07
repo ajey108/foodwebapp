@@ -76,8 +76,8 @@ router.put('/:id', async (request, response) => {
     try {
         if (
             !request.body.name ||
-            !request.body.priceInCents ||
-            !request.body.image
+            !request.body.priceInCents
+            
         ) {
             return response.status(400).send({
                 message: 'Required fields are missing!'
