@@ -6,6 +6,9 @@ import { authRouter } from "./controllers/authController.js";
 import { auth } from "./middleware/authMiddleware.js";
 import cors from "cors";
 import User from "./models/userModel.js";
+import cloudinary from "cloudinary";
+import multer from "multer";
+import {CloudinaryStorage} from "multer-storage-cloudinary";
 
 
 config();
@@ -28,4 +31,51 @@ app.use('/food',foodRoute);
 app.use('/auth',authRouter);
 
 app.use(auth);
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret:process.env.CLOUDINARY_API_SECRET
+});
+
+app.use((req,res,next)=>{
+    req.cloudinary = cloudinary;
+    next();
+});
+
+const storage = new CloudinaryStorage
+({
+    cloudinary:cloudinary,
+    params:{
+        folder: 'image',
+        allowedFormats:['jpeg','png','jpg'],
+
+    }
+});
+
+// multer setup
+
+const parser = multer({storage:storage});
+
+app.post('/upload.image',parser.single('file'),(req,res)=>{
+    if(!req.file){
+        return res.status(400).send("No file is uploaded.")
+    }
+
+    try{
+
+        if (!req.file.path){
+            throw new Error('File uploaded , but no path is available');
+        }
+
+        res.json({secure_url: req.file.path});
+
+    } catch (error){
+        console.error('Error during file upload: error');
+        res.status(500).send('Internal server error');
+
+    }
+})
+
+
 
