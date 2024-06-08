@@ -78,4 +78,20 @@ app.post('/upload.image',parser.single('file'),(req,res)=>{
 })
 
 
+app.get('/userProfile',auth,async(req,res)=>{
+    try{
+
+        const user = await User.findById(req.user.id).select('password')
+        if(!user){
+            return res.status(404).json({msg: 'User not found'});
+        }
+
+        res.json(user);
+
+    } catch(erro){
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+})
+
 
