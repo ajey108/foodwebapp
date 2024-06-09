@@ -5,7 +5,7 @@ import axios from 'axios';
 const Register = () => {
 
     const navigate = useNavigate();
-    const [userData,setUser]= useState({
+    const [userData,setUserData]= useState({
         name: '',
         email: '',
         password: '',
