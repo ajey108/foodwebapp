@@ -18,7 +18,7 @@ const Admin = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []); // Added empty array to run only once
+  }, []); 
 
   return (
     <div className="bg-gray-400">
@@ -52,7 +52,7 @@ const Admin = () => {
             ))}
           </tbody>
         </table>
-        {loading && <p>Loading...</p>} {/* Added loading indicator */}
+        {loading && <p>Loading...</p>} 
       </div>
     </div>
   );
