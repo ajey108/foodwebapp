@@ -9,7 +9,7 @@ const Admin = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:3000/food')
+      .get('http://localhost:5000/food')
       .then((response) => {
         setFood(response.data.data);
         setLoading(false);

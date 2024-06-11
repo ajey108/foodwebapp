@@ -17,7 +17,7 @@ const EditFood = () => {
   useEffect(()=>{
     setLoading(true);
     axios
-      .get(`http://localhost:3000/food/${id}`)
+      .get(`http://localhost:5000/food/${id}`)
       .then((response)=>{
         setName(response.data.name)
         setPriceInCents(response.data.priceInCents);

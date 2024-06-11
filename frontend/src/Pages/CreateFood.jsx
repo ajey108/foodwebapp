@@ -44,7 +44,7 @@ const CreateFood = () => {
     data.append('file', img);
 
     try {
-      const uploadUrl = 'http://localhost:3000/upload-image';
+      const uploadUrl = 'http://localhost:5000/upload-image';
       const res = await axios.post(uploadUrl, data, {
         headers: {
           'Authorization': `Bearer ${token}`
