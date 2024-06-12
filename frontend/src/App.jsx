@@ -1,6 +1,6 @@
 import React from 'react'
 import Admin from './Pages/Admin'
-import { Routes,Route,useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import CreateFood from './Pages/CreateFood'
 import EditFood from './Pages/EditFood'
@@ -14,44 +14,44 @@ const App = () => {
   return (
     <>
 
-    <Routes>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/logout" element={<Logout/>}/>
-      <Route path="/register" element={<Register/>}/>
-      <Route
-      path='/admin/*'
-      element={
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path='/admin/*'
+          element={
 
-      <ProtectedRoute>
+            <ProtectedRoute>
 
-        <AdminRoutes/>
-      </ProtectedRoute>
-    
-    
-    
-    }
-      />
+              <AdminRoutes />
+            </ProtectedRoute>
 
-    </Routes>
 
-    <ProtectedRoute/>
-    
-   
-    
+
+          }
+        />
+
+      </Routes>
+
+     
+
+
+
     </>
   )
 }
 
 //Admin routes
 
-const AdminRoutes =()=>{
+const AdminRoutes = () => {
 
-  return(
+  return (
     <Routes>
-      <Route path='/' element={<Admin/>}/>
-      <Route path='/food/create' element={<CreateFood/>}/>
-      <Route path='/food/edit/:id' element={<EditFood/>}/>
-      <Route path='/food/delete/:id' element={<DeleteFood/>}/>
+      <Route path='/' element={<Admin />} />
+      <Route path='/food/create' element={<CreateFood />} />
+      <Route path='/food/edit/:id' element={<EditFood />} />
+      <Route path='/food/delete/:id' element={<DeleteFood />} />
     </Routes>
   )
 
