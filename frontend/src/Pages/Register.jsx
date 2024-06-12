@@ -74,16 +74,36 @@ const Register = () => {
         )}
 
         <form className='w-full max-w-xs' onSubmit={submitHandler}>
-            <input type="text" placeholder='Username' name="name" value={userData.name} onChange={changeInputHandler} 
+            <input type="text"
+             placeholder='Username'
+              name="name" 
+              value={userData.name} 
+              onChange={changeInputHandler}
+               autoComplete="name" 
             className='shadow border rounded-md w-full py-2 px-3 text-gray-700'
             />
-            <input type="text" placeholder='Email' name="email" value={userData.email} onChange={changeInputHandler} 
+            <input type="text"
+             placeholder='Email'
+              name="email"
+               value={userData.email} 
+               onChange={changeInputHandler} 
+               autoComplete="email" 
             className='shadow border rounded-md w-full py-2 px-3 text-gray-700'
             />
-            <input type="password" placeholder='Password' name="password" value={userData.password} onChange={changeInputHandler} 
+            <input type="password" 
+            placeholder='Password'
+             name="password" 
+             value={userData.password} 
+             onChange={changeInputHandler} 
+             autoComplete="password" 
             className='shadow border rounded-md w-full py-2 px-3 text-gray-700'
             />
-            <input type="password" placeholder='Confirm password' name="password2" value={userData.password2} onChange={changeInputHandler} 
+            <input type="password"
+             placeholder='Confirm password'
+              name="password2"
+               value={userData.password2} 
+               onChange={changeInputHandler} 
+               autoComplete="password" 
             className='shadow border rounded-md w-full py-2 px-3 text-gray-700'
             />
             <button type="submit" className='bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-md w-full'>Register</button>

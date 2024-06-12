@@ -22,10 +22,10 @@ const App = () => {
           path='/admin/*'
           element={
 
-            <ProtectedRoute>
 
-              <AdminRoutes />
-            </ProtectedRoute>
+
+            <AdminRoutes />
+
 
 
 
@@ -34,7 +34,7 @@ const App = () => {
 
       </Routes>
 
-     
+
 
 
 
