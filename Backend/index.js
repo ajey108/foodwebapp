@@ -6,7 +6,7 @@ import { authRouter } from "./controllers/authController.js";
 import { auth } from "./middleware/authMiddleware.js";
 import cors from "cors";
 import User from "./models/userModel.js";
-import cloudinary from "cloudinary";
+import {v2 as cloudinary} from "cloudinary";
 import multer from "multer";
 import {CloudinaryStorage} from "multer-storage-cloudinary";
 
@@ -57,7 +57,7 @@ const storage = new CloudinaryStorage
 
 const parser = multer({storage:storage});
 
-app.post('/upload.image',parser.single('file'),(req,res)=>{
+app.post('/upload-image',parser.single('file'),(req,res)=>{
     if(!req.file){
         return res.status(400).send("No file is uploaded.")
     }
