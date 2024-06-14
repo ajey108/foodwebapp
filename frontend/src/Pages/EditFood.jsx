@@ -35,7 +35,7 @@ const EditFood = () => {
     const data = {name,priceInCents};
     setLoading(false);
     axios
-      .put(`http://localhost:3000/food/${id}`,data)
+      .put(`http://localhost:5000/food/${id}`,data)
       .then(()=>{
         setLoading(false);
         enqueueSnackbar('Food Edited successfully',{variant:'success'});
