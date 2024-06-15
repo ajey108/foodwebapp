@@ -5,18 +5,22 @@ import ProtectedRoute from './components/ProtectedRoute'
 import CreateFood from './Pages/CreateFood'
 import EditFood from './Pages/EditFood'
 import DeleteFood from './Pages/DeleteFood'
-import Logout from './Pages/Logout'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
+import AdminNavbar from './Pages/AdminNavbar'
+import Navbar from './Pages/Navbar'
 
 
 const App = () => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   return (
     <>
 
+    {isAdminRoute ? <AdminNavbar/>: <Navbar/>}
+
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Register />} />
         <Route
           path='/admin/*'
