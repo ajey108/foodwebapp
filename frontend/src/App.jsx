@@ -9,6 +9,7 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 import AdminNavbar from './Pages/AdminNavbar'
 import Navbar from './Pages/Navbar'
+import Home from './Pages/Home'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     {isAdminRoute ? <AdminNavbar/>: <Navbar/>}
 
       <Routes>
+        <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
