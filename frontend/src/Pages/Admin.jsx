@@ -21,7 +21,7 @@ const Admin = () => {
   }, []); 
 
   return (
-    <div className="bg-gray-400">
+    <div className="bg-gray-400 px-4 py-8 max-w-7xl mx-auto mt-16">
 
       <Link to='/admin/food/create' className='bg-green-600 hover:bg-green-900 text-white py-2 px-4 text-sm rounded-lg shadow-md'>Add Item + </Link>
       <div className='over-flow-x-auto shadow-md rounded-lg'>
