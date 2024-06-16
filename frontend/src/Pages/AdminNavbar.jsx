@@ -15,7 +15,7 @@ const AdminNavbar = () => {
     const loggedIn = !!localStorage.getItem('token');
 
   return (
-    <div className='bg-gradient-to-r from-green-500 to-green-600 shadow-lg'>
+    <div className='bg-gradient-to-r from-green-500 to-green-600 shadow-lg '>
         <div className='flex justify-between items-center p-4'>
             <h2 className='text-xl text-white font-bold'>Admin Panel</h2>
 
