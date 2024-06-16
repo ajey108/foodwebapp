@@ -30,71 +30,84 @@ FoodApp is a full-stack web application that allows users to register, log in, b
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/ajey108/foodapp.git
-cd foodapp
+    ```bash
+    git clone https://github.com/yourusername/foodapp.git
+    cd foodapp
+    ```
 
 2. Install dependencies for both frontend and backend:
-cd frontend
-npm install
 
-cd ../backend
-npm install
-Configuration
-Create a .env file in the backend folder and add the following environment variables:
+    ```bash
+    cd frontend
+    npm install
 
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-STRIPE_SECRET_KEY=your_stripe_secret_key
+    cd ../backend
+    npm install
+    ```
 
+### Configuration
 
-In the frontend folder, create a .env file and add the following environment variable:
+1. Create a `.env` file in the `backend` folder and add the following environment variables:
 
-REACT_APP_STRIPE_PUBLIC_KEY=your_stripe_public_key
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret
+    STRIPE_SECRET_KEY=your_stripe_secret_key
+    ```
 
+2. In the `frontend` folder, create a `.env` file and add the following environment variable:
 
-Running the Application
-Start the backend server:
+    ```env
+    REACT_APP_STRIPE_PUBLIC_KEY=your_stripe_public_key
+    ```
 
-cd backend
-npm run dev
+### Running the Application
 
-Start the frontend server:
-cd frontend
-npm run dev
+1. Start the backend server:
 
-The frontend will be running on http://localhost:3000 and the backend on http://localhost:5000.
+    ```bash
+    cd backend
+    npm run dev
+    ```
 
+2. Start the frontend server:
 
-Usage
-Register: Users can register by providing their details on the registration page.
+    ```bash
+    cd frontend
+    npm run dev
+    ```
 
-Login/Logout: Users can log in with their credentials and log out when they are done.
+The frontend will be running on `http://localhost:3000` and the backend on `http://localhost:5000`.
 
-Admin Panel: Admins can access the admin panel to manage food items, including adding, updating, and deleting items.
+## Usage
 
-Order Food: Users can browse food items, add them to the cart, and proceed to checkout to make a payment through Stripe.
+- **Register**: Users can register by providing their details on the registration page.
+- **Login/Logout**: Users can log in with their credentials and log out when they are done.
+- **Admin Panel**: Admins can access the admin panel to manage food items, including adding, updating, and deleting items.
+- **Order Food**: Users can browse food items, add them to the cart, and proceed to checkout to make a payment through Stripe.
 
-Dependencies
+## Dependencies
 
-Frontend
-React
-React Router DOM
-React Icons
-Backend
-Express
-Mongoose
-Cors
-Multer
-JWT
-Bcrypt
-Nodemon
+### Frontend
 
-Contributing
+- React
+- React Router DOM
+- React Icons
+
+### Backend
+
+- Express
+- Mongoose
+- Cors
+- Multer
+- JWT
+- Bcrypt
+- Nodemon
+
+## Contributing
+
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-License
+## License
+
 This project is licensed under the MIT License.
-
-
-
