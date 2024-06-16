@@ -10,6 +10,8 @@ import Register from './Pages/Register'
 import AdminNavbar from './Pages/AdminNavbar'
 import Navbar from './Pages/Navbar'
 import Home from './Pages/Home'
+import Contact from './Pages/Contact'
+import Footer from './Pages/Footer'
 
 
 const App = () => {
@@ -23,14 +25,19 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route
           path='/admin/*'
           element={
 
+            <ProtectedRoute>
 
+           
 
             <AdminRoutes />
+
+            </ProtectedRoute>
 
 
 
@@ -39,6 +46,7 @@ const App = () => {
         />
 
       </Routes>
+      <Footer/>
 
 
 
