@@ -11,7 +11,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='bg-gradient-to-b from-green-400 to-green-600 shadow-lg fixed top-0 z-50 opacity-95 w-full'>
+    <div className='bg-gradient-to-b from-green-400 to-green-600 shadow-lg fixed top-0 z-50 opacity-95 w-full mb-4'>
         <div className='flex justify-between items-center p-4 max-w-[1400px] mx-auto'>
             <a href="/" className='flex items-center'>
                 <img src={logoNav} alt="logo" className='max-w-[100px] rounded-full'/>
