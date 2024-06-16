@@ -31,7 +31,7 @@ FoodApp is a full-stack web application that allows users to register, log in, b
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/foodapp.git
+    git clone https://github.com/ajey108/foodapp.git
     cd foodapp
     ```
 
