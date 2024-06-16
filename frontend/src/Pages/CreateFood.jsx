@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { enqueueSnackbar, useSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 
@@ -30,14 +30,13 @@ const CreateFood = () => {
   const uploadFile = async () => {
     if (!img) {
       enqueueSnackbar('No image selected', { variant: 'warning' });
-      return;
+      return null;
     }
 
     const token = localStorage.getItem('token');
     if (!token) {
-      console.log('No token found');
       enqueueSnackbar('Authentication required', { variant: 'error' });
-      return;
+      return null;
     }
 
     const data = new FormData();
@@ -52,13 +51,13 @@ const CreateFood = () => {
       });
 
       const { secure_url } = res.data;
-      console.log('uploaded image url:', secure_url);
       enqueueSnackbar('Image uploaded successfully', { variant: 'success' });
       return secure_url;
 
     } catch (error) {
       console.error('Upload error', error);
       enqueueSnackbar('Failed to upload an image', { variant: 'error' });
+      return null;
     }
   };
 
@@ -105,7 +104,7 @@ const CreateFood = () => {
           "Authorization": `Bearer ${token}`
         }
       };
-      console.log(import.meta.env.VITE_REACT_APP_BACKEND_BASEURL);
+
       await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/food`, formData, config);
       enqueueSnackbar('Food saved successfully', { variant: 'success' });
       navigate('/admin');
