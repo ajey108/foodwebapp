@@ -12,6 +12,7 @@ import Navbar from './Pages/Navbar'
 import Home from './Pages/Home'
 import Contact from './Pages/Contact'
 import Footer from './Pages/Footer'
+import Cart from './Pages/Cart'
 
 
 const App = () => {
@@ -26,7 +27,8 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Cart />} />
+        <Route path="/cart" element={<Register />} />
         <Route
           path='/admin/*'
           element={
