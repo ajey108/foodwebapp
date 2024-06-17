@@ -25,7 +25,7 @@ const FoodSingleCard = ({ food }) => {
             <div className='flex justify-between items-baseline mb-12'>
                 <h2 className='text-xl lg:text-2xl font-bold text-gray-800'>{food.name}</h2>
                 <span className='text-lg lg:text-xl font-semibold text-green-600'>
-                    ${(food.priceInCents / 100).toFixed(2)}
+                ₹{(food.priceInCents / 100).toFixed(2)}
                 </span>
             </div>
 
