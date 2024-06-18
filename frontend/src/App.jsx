@@ -23,15 +23,15 @@ const App = () => {
   return (
     <>
 
-    {isAdminRoute ? <AdminNavbar/>: <Navbar/>}
+      {isAdminRoute ? <AdminNavbar /> : <Navbar />}
 
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/contact" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/cart" element={<Register />} />
         <Route
           path='/admin/*'
@@ -39,24 +39,15 @@ const App = () => {
 
             <ProtectedRoute>
 
-           
-
-            <AdminRoutes />
+              <AdminRoutes />
 
             </ProtectedRoute>
-
-
-
 
           }
         />
 
       </Routes>
-      <Footer/>
-
-
-
-
+      <Footer />
 
     </>
   )
