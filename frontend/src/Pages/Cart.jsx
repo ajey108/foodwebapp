@@ -24,9 +24,16 @@ const Cart = () => {
         }))
 
         try {
+            const token = localStorage.getItem('token');
             const response = await axios.post('http://localhost:5000/stripe/create-checkout-session', {
                 products: transformedItems
+            },{
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
             })
+
+          
 
             if (response.data.id) {
                 await stripe.redirectToCheckout({
