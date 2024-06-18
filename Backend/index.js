@@ -9,6 +9,7 @@ import User from "./models/userModel.js";
 import {v2 as cloudinary} from "cloudinary";
 import multer from "multer";
 import {CloudinaryStorage} from "multer-storage-cloudinary";
+import Stripe from "stripe";
 
 
 config();
@@ -93,3 +94,52 @@ app.get('/userProfile',auth,async(req,res)=>{
         res.status(500).send('Server error');
     }
 });
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
+//route to create a stripe checkout session
+
+app.post('/create-checkout-session',async(req,res)=>{
+  const {products,customerEmail} = req.body;
+
+  const lineItems = products.map(product => ({
+    price_data:{
+        currency:'inr',
+        product_data:{
+           name:product.name 
+        },
+        unit_amount: product.priceInCents
+    },
+    quantity: product.quantity
+  }))
+
+  const productDetailsSerialized = JSON.stringify(prodcuts.map(prodcut =>({
+    name:prodcut.name,
+    quantity:product.quantity,
+    price:product.priceInCents * 100
+
+  }
+
+  )))
+
+  try{
+
+    const session = await stripe.checkout.session.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      metadata: {productDetails:productDetailsSerialized},
+      mode:'payment',
+      customer_email:customerEmail,
+      billing_address_collection:'required',
+      success_url:`${process.env.FRONTEND_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url:`${process.env.FRONTEND_URL}/cancel`
+    })
+
+    res.json({id:session.id});
+
+  } catch(error){
+console.log('Failed to create checkout session:',error.message);
+res.status(400).json({message:'Error creating checkout session'});
+  }
+})
