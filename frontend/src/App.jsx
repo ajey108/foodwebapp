@@ -13,6 +13,8 @@ import Home from './Pages/Home'
 import Contact from './Pages/Contact'
 import Footer from './Pages/Footer'
 import Cart from './Pages/Cart'
+import Success from './Pages/Success'
+import Cancel from './Pages/Cancel'
 
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/contact" element={<Cart />} />
         <Route path="/cart" element={<Register />} />
