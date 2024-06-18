@@ -77,7 +77,7 @@ FoodApp is a full-stack web application that allows users to register, log in, b
     npm run dev
     ```
 
-The frontend will be running on `http://localhost:3000` and the backend on `http://localhost:5000`.
+The frontend will be running on `http://localhost:5173` and the backend on `http://localhost:5000`.
 
 ## Usage
 
