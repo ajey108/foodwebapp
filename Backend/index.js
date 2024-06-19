@@ -3,6 +3,7 @@ import {config} from "dotenv";
 import mongoose from "mongoose";
 import foodRoute from "./routes/foodRoute.js";
 import stripeRoute from "./routes/stripeRoute.js";
+import orderRoute from "./routes/orderRoute.js";
 
 import { authRouter } from "./controllers/authController.js";
 import { auth } from "./middleware/authMiddleware.js";
@@ -35,6 +36,8 @@ app.use('/food',foodRoute);
 app.use('/auth',authRouter);
 
 app.use(auth);
+
+app.use('/order',orderRoute);
 
 
 
