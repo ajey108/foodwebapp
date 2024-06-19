@@ -1,126 +1,97 @@
-import express, { request, response } from "express";
-import { Food } from "../models/foodModel.js";
+import express from 'express';
+import { Food } from '../models/foodModel.js';
+import { auth } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-//Send all food items
-
-router.post('/', async (request, response) => {
+// Create a new food item
+router.post('/', auth, async (req, res) => {
     try {
-        if (
-            !request.body.name ||
-            !request.body.priceInCents ||
-            !request.body.image
-        ) {
-            return response.status(400).send({
-                message: 'Required fields are missing!'
-            })
+        const { name, priceInCents, image } = req.body;
+
+        if (!name || !priceInCents || !image) {
+            return res.status(400).send({ message: 'Required fields are missing!' });
         }
 
-        const newFood = {
-            name: request.body.name,
-            priceInCents: request.body.priceInCents,
-            image: request.body.image,
-        };
-
+        const newFood = { name, priceInCents, image };
         const food = await Food.create(newFood);
 
-        return response.status(201).send(food);
-
+        return res.status(201).send(food);
     } catch (error) {
-        console.log(error.message);
-        response.status(500).send({ message: error.message });
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
     }
 });
 
-//Get all food items
-router.get('/', async (request, response) => {
+// Get all food items
+router.get('/', async (req, res) => {
     try {
-
         const food = await Food.find({});
-
-        return response.status(200).json({
-            data: food
-        })
-
+        return res.status(200).json({ data: food });
     } catch (error) {
-        console.log(error.message);
-        response.status(500).send({ message: error.message })
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
     }
 });
 
-//Delete Particular food item
-
-router.delete('/:id', async (request, response) => {
+// Delete a particular food item
+router.delete('/:id', auth, async (req, res) => {
     try {
-
-        const { id } = request.params;
+        const { id } = req.params;
         const result = await Food.findByIdAndDelete(id);
 
         if (!result) {
-            return response.status(400).json({ message: 'Item not found' })
+            return res.status(404).json({ message: 'Item not found' });
         }
 
-        response.status(200).json({message:`Item succesfully deleted`,deletedItem:result})
+        return res.status(200).json({ message: 'Item successfully deleted', deletedItem: result });
     } catch (error) {
-        console.log(error.message);
-        response.status(500).send({ message: error.message })
-    }
-})
-
-//Update Particular food item
-
-
-router.put('/:id', async (request, response) => {
-
-    try {
-        if (
-            !request.body.name ||
-            !request.body.priceInCents
-            
-        ) {
-            return response.status(400).send({
-                message: 'Required fields are missing!'
-            })
-        }
-
-        const { id } = request.params;
-        const result = await Food.findByIdAndUpdate(id,request.body,{
-            new:true
-        });
-
-        if(!result){
-            return response.status(400).json({ message: 'Food not found' })
-
-        }
-
-        return response.status(200).send({message:"Food updated"})
-
-
-
-
-    } catch (error) {
-        console.log(error.message);
-        response.status(500).send({ message: error.message })
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
     }
 });
 
-//Get particular food item
+// Update a particular food item
+router.put('/:id', auth, async (req, res) => {
+    try {
+        const { name, priceInCents, image } = req.body;
+        const { id } = req.params;
 
-router.get('/:id',async(request,response)=>{
-    try{
+        if (!name || !priceInCents) {
+            return res.status(400).send({ message: 'Required fields are missing!' });
+        }
 
-        const { id } = request.params;
-        const food = await Food.findById(id);
-        
-           return response.status(200).json(food)
-     
+        const updatedData = { name, priceInCents };
+        if (image) updatedData.image = image; // Only update the image if provided
 
-    } catch(error){
-        console.log(error.message);
-        response.status(500).send({ message: error.message })
+        const result = await Food.findByIdAndUpdate(id, updatedData, { new: true });
+
+        if (!result) {
+            return res.status(404).json({ message: 'Food not found' });
+        }
+
+        return res.status(200).send({ message: 'Food updated', updatedItem: result });
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
     }
-})
+});
 
+// Get a particular food item
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const food = await Food.findById(id);
 
-    export default router;
+        if (!food) {
+            return res.status(404).json({ message: 'Food not found' });
+        }
+
+        return res.status(200).json(food);
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).send({ message: error.message });
+    }
+});
+
+export default router;
