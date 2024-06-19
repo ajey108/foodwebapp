@@ -15,6 +15,8 @@ import Footer from './Pages/Footer'
 import Cart from './Pages/Cart'
 import Success from './Pages/Success'
 import Cancel from './Pages/Cancel'
+import Dashboard from './Pages/Dashboard'
+import DeleteOrder from './Pages/DeleteOrder'
 
 
 const App = () => {
@@ -60,6 +62,8 @@ const AdminRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<Admin />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/order/delete/:id' element={<DeleteOrder />} />
       <Route path='/food/create' element={<CreateFood />} />
       <Route path='/food/edit/:id' element={<EditFood />} />
       <Route path='/food/delete/:id' element={<DeleteFood />} />
