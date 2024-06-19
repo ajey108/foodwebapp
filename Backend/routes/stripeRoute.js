@@ -47,4 +47,23 @@ router.post('/create-checkout-session', async (req, res) => {
   }
 });
 
+
+//route to retrieve a session by its ID
+router.get('/api/session/:sessionId', async (req, res) => {
+  try {
+      const session = await stripe.checkout.sessions.retrieve(req.params.sessionId);
+
+      const response = {
+          customerEmail: session.customer_details.email,
+          items: JSON.parse(session.metadata.productDetails),
+          address: session.customer_details.address
+      }
+
+      res.json(response);
+  } catch (error) {
+      console.error('Failed to retrieve session:', error.message);
+      res.status(400).json({ message: 'Error retrieving session details'})
+  }
+})
+
 export default router;
