@@ -26,7 +26,7 @@ const Navbar = () => {
             </button>
 
             <nav className={`${nav ? "flex bg-green-600" : "hidden"} absolute  lg:static w-full lg:w-auto lg:flex flex-col lg:flex-row items-center
-                            space-y-5 lg:space-y-0 lg:space-x-6 top-14 left-0 right-0 py-5 lg:py-0 z-20`}>
+                            space-y-5 lg:space-y-0 lg:space-x-6 top-14 left-0 right-0 py-5 lg:py-0 z-20 mb-4`}>
                         <Link to="/" className='text-white'>Home</Link>
                         <Link to="/contact" className='text-white'>Contact</Link>
             </nav>
