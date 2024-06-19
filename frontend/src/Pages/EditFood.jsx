@@ -14,6 +14,14 @@ const EditFood = () => {
   const {id} = useParams();
   const {enqueueSnackbar} = useSnackbar();
 
+  const token = localStorage.getItem('token');
+  const config ={
+    headers:{
+      'Authorization':`Bearer${token}`,
+      'Content Type': `application/json`
+    }
+  }
+
   useEffect(()=>{
     setLoading(true);
     axios
@@ -35,7 +43,7 @@ const EditFood = () => {
     const data = {name,priceInCents};
     setLoading(false);
     axios
-      .put(`http://localhost:5000/food/${id}`,data)
+      .put(`http://localhost:5000/food/${id}`,data,config)
       .then(()=>{
         setLoading(false);
         enqueueSnackbar('Food Edited successfully',{variant:'success'});
