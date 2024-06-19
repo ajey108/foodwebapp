@@ -36,7 +36,7 @@ app.use('/food',foodRoute);
 app.use('/order',orderRoute);
 
 app.use('/auth',authRouter);
-app.use(auth);
+
 
 
 cloudinary.config({
@@ -64,7 +64,7 @@ const storage = new CloudinaryStorage
 
 const parser = multer({storage:storage});
 
-app.post('/upload-image',parser.single('file'),(req,res)=>{
+app.post('/upload-image',auth,parser.single('file'),(req,res)=>{
     if(!req.file){
         return res.status(400).send("No file is uploaded.")
     }
