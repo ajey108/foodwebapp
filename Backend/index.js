@@ -13,6 +13,7 @@ import {v2 as cloudinary} from "cloudinary";
 import multer from "multer";
 import {CloudinaryStorage} from "multer-storage-cloudinary";
 import Stripe from "stripe";
+import { webhookRouter } from "./webhooks/webhookHandler.js";
 
 
 config();
@@ -32,14 +33,10 @@ app.use(express.json());
 
 app.use('/stripe',stripeRoute);
 app.use('/food',foodRoute);
-
-app.use('/auth',authRouter);
-
-app.use(auth);
-
 app.use('/order',orderRoute);
 
-
+app.use('/auth',authRouter);
+app.use(auth);
 
 
 cloudinary.config({
@@ -103,4 +100,6 @@ app.get('/userProfile',auth,async(req,res)=>{
         res.status(500).send('Server error');
     }
 });
+
+app.use('/webhooks',webhookRouter);
 
