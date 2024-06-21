@@ -33,7 +33,7 @@ const Success = () => {
   useEffect(() => {
     const fetchSessionDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/stripe/api/session/${session_id}`);
+        const response = await fetch(`https://foodweb-backend.onrender.com/stripe/api/session/${session_id}`);
         if (!response.ok) {
           throw new Error('Response was not ok');
         }
