@@ -11,6 +11,16 @@ const DeleteFood = () => {
   const {enqueueSnackbar} = useSnackbar();
 
 
+   const token = localStorage.getItem('token');
+
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    };
+
+
   const handleDeleteFood =()=>{
     setLoading(true);
     axios
