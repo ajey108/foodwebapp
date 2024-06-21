@@ -12,7 +12,7 @@ const Dashboard = () => {
         setLoading(true);
 
         axios
-            .get('http://localhost:5000/order')
+            .get('https://foodweb-backend.onrender.com/order')
             .then((response) => {
                 setOrders(response.data);
                 setLoading(false);

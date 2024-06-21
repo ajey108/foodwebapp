@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5000/food')
+            .get('https://foodweb-backend.onrender.com/food')
             .then((response) => {
                 setFood(response.data.data);
                 setLoading(false);

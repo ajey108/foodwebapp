@@ -25,7 +25,7 @@ const Cart = () => {
 
         try {
 
-            const response = await axios.post('http://localhost:5000/stripe/create-checkout-session', {
+            const response = await axios.post('https://foodweb-backend.onrender.com/stripe/create-checkout-session', {
                 products: transformedItems
             }, {
 

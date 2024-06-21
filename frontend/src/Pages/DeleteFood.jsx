@@ -14,7 +14,7 @@ const DeleteFood = () => {
   const handleDeleteFood =()=>{
     setLoading(true);
     axios
-    .delete(`http://localhost:5000/food/${id},config`)
+    .delete(`https://foodweb-backend.onrender.com/food/${id},config`)
     .then(()=>{
       setLoading(false);
       enqueueSnackbar('Food Deleted',{variant:'success'});

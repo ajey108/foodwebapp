@@ -39,7 +39,7 @@ const Register = () => {
                 }
             };
 
-            await axios.post('http://localhost:5000/auth/register',
+            await axios.post('https://foodweb-backend.onrender.com/auth/register',
         {
             name: userData.name,
             email: userData.email,

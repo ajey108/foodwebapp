@@ -24,7 +24,7 @@ const DeleteOrder = () => {
         setLoading(true);
 
         axios
-            .delete(`http://localhost:5000/order/${id}`, config)
+            .delete(`https://foodweb-backend.onrender.com/order/${id}`, config)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar('Order deleted succesfully', {variant:'success'});

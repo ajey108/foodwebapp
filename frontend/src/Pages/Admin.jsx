@@ -9,7 +9,7 @@ const Admin = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5000/food')
+      .get('https://foodweb-backend.onrender.com')
       .then((response) => {
         setFood(response.data.data);
         setLoading(false);

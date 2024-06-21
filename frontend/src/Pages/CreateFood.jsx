@@ -43,7 +43,7 @@ const CreateFood = () => {
     data.append('file', img);
 
     try {
-      const uploadUrl = 'http://localhost:5000/upload-image';
+      const uploadUrl = 'https://foodweb-backend.onrender.com/upload-image';
       const res = await axios.post(uploadUrl, data, {
         headers: {
           'Authorization': `Bearer ${token}`
